@@ -2,12 +2,14 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { PlayerCardComponent } from './player/player-card/player-card.component';
-import { MatCardModule } from '@angular/material/card'
+import { MatCardModule } from '@angular/material/card';
+import { ListPlayersComponent } from './player/list-players/list-players.component'
 
 @NgModule({
   declarations: [
   
-    PlayerCardComponent
+    PlayerCardComponent,
+    ListPlayersComponent
   ],
   imports: [
     CommonModule,
@@ -15,7 +17,8 @@ import { MatCardModule } from '@angular/material/card'
   ],
   providers: [provideAnimationsAsync()],
   exports:[
-    PlayerCardComponent
+    PlayerCardComponent,
+    ListPlayersComponent
   ]
 })
 export class SharedModule { }

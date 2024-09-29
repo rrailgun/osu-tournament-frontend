@@ -8,12 +8,8 @@
   </mat-drawer>
   <mat-drawer-content>
     <div>
-      <div>
-        <h1>Players in DB: </h1>
-        <ng-container *ngFor="let player of playerList">
-          <app-player-card [playerData]="player"></app-player-card>
-        </ng-container>
-      </div>
+      <app-list-players [playerList]="freeAgents" heading="Free Agents"></app-list-players>
+      <app-list-players [playerList]="allPlayers" heading="Registered Players"></app-list-players>
     </div>
   </mat-drawer-content>
 </mat-drawer-container>

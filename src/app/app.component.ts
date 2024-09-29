@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { HttpRequestsService } from './services/http-requests.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Player } from './models/Player';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,8 @@ import { Player } from './models/Player';
 })
 export class AppComponent {
   userInformation: any; //should create a models folder and make User, Team models etc.
-  playerList: Player[] = [];
+  freeAgents: Player[] = [];
+  allPlayers: Player[] = [];
 
   constructor(private apiRequests: HttpRequestsService,
     private route: ActivatedRoute
@@ -18,9 +20,11 @@ export class AppComponent {
     apiRequests.getSelf().subscribe(res => {
       this.userInformation = res;
     })
+    apiRequests.getFreeAgents().subscribe( res => {
+      this.freeAgents = res;
+    })
     apiRequests.getPlayers().subscribe( res => {
-      this.playerList = res;
-      console.log(res)
+      this.allPlayers = res;
     })
   }
 

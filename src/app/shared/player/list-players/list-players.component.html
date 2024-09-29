@@ -1,0 +1,6 @@
+<div>
+    <h1 *ngIf="heading">{{heading}}</h1>
+    <ng-container *ngFor="let player of playerList">
+        <app-player-card [playerData]="player"></app-player-card>
+    </ng-container>
+</div>

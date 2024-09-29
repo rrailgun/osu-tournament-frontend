@@ -28,5 +28,9 @@ export class HttpRequestsService {
   public getPlayers(): Observable<Player[]> {
     return this.http.get<Player[]>('/api/players');
   }
+
+  public getFreeAgents(): Observable<Player[]> {
+    return this.http.get<Player[]>('/api/free-agents');
+  }
   
 }
