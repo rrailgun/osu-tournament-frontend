@@ -1,7 +1,14 @@
 <div>
   <button *ngIf="!userInformation" (click)="loginOsuOauth()">Login</button>
   <div *ngIf="userInformation">
-    <img [src]="'https://a.ppy.sh/'+userInformation.id"/>
+    <img [src]="'https://a.ppy.sh/'+userInformation.player_id"/>
     <p>{{userInformation.username}}</p>
+  </div>
+  <div>
+    <h1>Players in DB: </h1>
+    <ng-container *ngFor="let player of playerList">
+      <img [src]="'https://a.ppy.sh/'+player.player_id"/>
+      <p>{{player.username}}</p>
+    </ng-container>
   </div>
 </div>

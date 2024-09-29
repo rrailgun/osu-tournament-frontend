@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { buildUrl } from 'osu-web.js';
 import { catchError, map, Observable, throwError } from 'rxjs';
+import { Player } from '../models/Player';
 
 @Injectable({
   providedIn: 'root'
@@ -20,8 +21,12 @@ export class HttpRequestsService {
     return true;
   }
 
-  public getSelf(): Observable<{username: string, id: number}> {
-    return this.http.get<{username: string, id: number}>('/api/getSelf');
+  public getSelf(): Observable<Player> {
+    return this.http.get<Player>('/api/getSelf');
+  }
+
+  public getPlayers(): Observable<Player[]> {
+    return this.http.get<Player[]>('/api/players');
   }
   
 }
