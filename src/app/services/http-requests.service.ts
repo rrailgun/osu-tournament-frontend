@@ -12,12 +12,7 @@ export class HttpRequestsService {
   constructor(private http: HttpClient) {}
 
   public loginOsuOauth(): void {
-    window.location.href=buildUrl.authRequest(35056, 'http://localhost:3000/auth/cb', ['identify']);
-  }
-
-  public getToken(code: string): void {
-    console.log(code)
-    this.http.get('/api/auth/cb?code='+code).subscribe(res => console.log(res))
+    window.location.href=buildUrl.authRequest(35056, 'http://localhost:3000/auth/cb', ['identify','public']);
   }
 
   public registerForTournament(): boolean {
