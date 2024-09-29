@@ -7,20 +7,24 @@ import { provideHttpClient } from '@angular/common/http';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { SharedModule } from './shared/shared.module';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatButtonModule } from '@angular/material/button' 
-
+import { MatButtonModule } from '@angular/material/button';
+import { AllPlayersComponent } from './components/all-players/all-players.component' 
+import { provideRouter, RouterOutlet } from '@angular/router';
+import { routes } from './app-routing.module'
 @NgModule({
   declarations: [
     AppComponent,
+    AllPlayersComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     SharedModule,
     MatSidenavModule,
-    MatButtonModule
+    MatButtonModule,
+    RouterOutlet
   ],
-  providers: [provideHttpClient(), provideAnimationsAsync()],
+  providers: [provideHttpClient(), provideAnimationsAsync(), provideRouter(routes)],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

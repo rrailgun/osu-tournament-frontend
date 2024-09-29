@@ -1,15 +1,18 @@
-<mat-drawer-container class="drawer-container">
-  <mat-drawer mode="side" class="side-drawer" opened>
+<mat-sidenav-container class="drawer-container">
+  <mat-sidenav mode="side" class="side-drawer" opened>
     <button mat-button *ngIf="!userInformation" (click)="loginOsuOauth()">Login</button>
     <div *ngIf="userInformation">
       <img [src]="'https://a.ppy.sh/'+userInformation.player_id"/>
       <p>Logged in as {{userInformation.username}}</p>
     </div>
-  </mat-drawer>
-  <mat-drawer-content>
-    <div>
-      <app-list-players [playerList]="freeAgents" heading="Free Agents"></app-list-players>
-      <app-list-players [playerList]="allPlayers" heading="Registered Players"></app-list-players>
-    </div>
-  </mat-drawer-content>
-</mat-drawer-container>
+    <section>
+      <a mat-button href="/allPlayers">View All Players</a>
+    </section>
+    <section>
+      <a mat-button href="/fdsafadsdasf">Example broken link</a>
+    </section>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

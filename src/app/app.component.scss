@@ -5,9 +5,12 @@ img {
 .side-drawer {
     background-color: rgb(227, 227, 227);
     padding: .5rem;
+    top:0;
+    bottom:0;
+    position:fixed;
 }
 
-mat-drawer-content {
+mat-sidenav-content {
     background-color: white;
     padding: .5rem;
 }
