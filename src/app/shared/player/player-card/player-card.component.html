@@ -1,7 +1,7 @@
 <mat-card class='player-card' appearance="outlined">
     <mat-card-header>
         <mat-card-title-group>
-            <mat-card-title>{{playerData?.username}}</mat-card-title>
+            <mat-card-title (click)="openProfile(playerData?.player_id!)">{{playerData?.username}}</mat-card-title>
             <mat-card-subtitle>{{playerData?.team ? playerData?.team : 'Free Agent'}}</mat-card-subtitle>
             <img mat-card-sm-image [src]="'https://a.ppy.sh/'+playerData?.player_id">
         </mat-card-title-group>

@@ -1,5 +1,8 @@
 .player-card {
     max-width: 20rem;
     margin-bottom: 1rem;
-    margin-left: 0.25rem;
+}
+
+mat-card-title {
+    cursor: pointer;
 }

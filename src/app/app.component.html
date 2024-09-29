@@ -1,9 +1,9 @@
-<mat-drawer-container class="example-container">
-  <mat-drawer mode="side" opened>
+<mat-drawer-container class="drawer-container">
+  <mat-drawer mode="side" class="side-drawer" opened>
     <button mat-button *ngIf="!userInformation" (click)="loginOsuOauth()">Login</button>
     <div *ngIf="userInformation">
       <img [src]="'https://a.ppy.sh/'+userInformation.player_id"/>
-      <p>Logged in as{{userInformation.username}}</p>
+      <p>Logged in as {{userInformation.username}}</p>
     </div>
   </mat-drawer>
   <mat-drawer-content>

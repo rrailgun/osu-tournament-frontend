@@ -12,5 +12,9 @@ export class PlayerCardComponent {
   constructor() {
     
   }
+  
+  openProfile(id:number): void {
+    window.open(`https://osu.ppy.sh/u/${id}`, '_blank');
+  }
 
 }
