@@ -1,14 +1,19 @@
-<div>
-  <button *ngIf="!userInformation" (click)="loginOsuOauth()">Login</button>
-  <div *ngIf="userInformation">
-    <img [src]="'https://a.ppy.sh/'+userInformation.player_id"/>
-    <p>{{userInformation.username}}</p>
-  </div>
-  <div>
-    <h1>Players in DB: </h1>
-    <ng-container *ngFor="let player of playerList">
-      <img [src]="'https://a.ppy.sh/'+player.player_id"/>
-      <p>{{player.username}}</p>
-    </ng-container>
-  </div>
-</div>
+<mat-drawer-container class="example-container">
+  <mat-drawer mode="side" opened>
+    <button mat-button *ngIf="!userInformation" (click)="loginOsuOauth()">Login</button>
+    <div *ngIf="userInformation">
+      <img [src]="'https://a.ppy.sh/'+userInformation.player_id"/>
+      <p>Logged in as{{userInformation.username}}</p>
+    </div>
+  </mat-drawer>
+  <mat-drawer-content>
+    <div>
+      <div>
+        <h1>Players in DB: </h1>
+        <ng-container *ngFor="let player of playerList">
+          <app-player-card [playerData]="player"></app-player-card>
+        </ng-container>
+      </div>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>

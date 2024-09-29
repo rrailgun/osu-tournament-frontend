@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpRequestsService } from './services/http-requests.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import { AsyncPipe } from '@angular/common';
 import { Player } from './models/Player';
 
 @Component({
