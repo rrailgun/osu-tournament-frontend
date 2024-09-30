@@ -8,13 +8,19 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { SharedModule } from './shared/shared.module';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
+import { MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { AllPlayersComponent } from './components/all-players/all-players.component' 
 import { provideRouter, RouterOutlet } from '@angular/router';
 import { routes } from './app-routing.module'
+import { MatListModule } from '@angular/material/list';
+import { FreeAgentsComponent } from './components/free-agents/free-agents.component'
+
+
 @NgModule({
   declarations: [
     AppComponent,
     AllPlayersComponent,
+    FreeAgentsComponent,
   ],
   imports: [
     BrowserModule,
@@ -22,6 +28,8 @@ import { routes } from './app-routing.module'
     SharedModule,
     MatSidenavModule,
     MatButtonModule,
+    MatProgressSpinnerModule,
+    MatListModule,
     RouterOutlet
   ],
   providers: [provideHttpClient(), provideAnimationsAsync(), provideRouter(routes)],

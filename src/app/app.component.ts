@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpRequestsService } from './services/http-requests.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { Player } from './models/Player';
-import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -10,25 +9,43 @@ import { Observable, of } from 'rxjs';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  userInformation: any; //should create a models folder and make User, Team models etc.
-  freeAgents: Player[] = [];
-  allPlayers: Player[] = [];
+  userInformation: Player | undefined;
+  loading: boolean = true;
+  links = [
+    {
+        label: 'View All Players',
+        route: '/players/all-players'
+    },
+    {
+        label: 'View Free Agents',
+        route: '/players/free-agents'
+    },
+    {
+        label: 'Example Broken Link',
+        route: '/adskljf'
+    }
+  ]
 
   constructor(private apiRequests: HttpRequestsService,
-    private route: ActivatedRoute
+    private router: Router
   ) {
-    apiRequests.getSelf().subscribe(res => {
-      this.userInformation = res;
-    })
-    apiRequests.getFreeAgents().subscribe( res => {
-      this.freeAgents = res;
-    })
-    apiRequests.getPlayers().subscribe( res => {
-      this.allPlayers = res;
-    })
+    apiRequests.getSelf().subscribe(
+        res => {
+            this.userInformation = res
+            this.loading=false;
+        },
+        err => {
+            this.userInformation = undefined
+            this.loading=false;
+        }
+    )
   }
 
   loginOsuOauth():void {
     this.apiRequests.loginOsuOauth();
+  }
+
+  navigate(destination: string) {
+    this.router.navigateByUrl(destination)
   }
 }
