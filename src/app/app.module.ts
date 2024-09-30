@@ -8,13 +8,17 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { SharedModule } from './shared/shared.module';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
+
 import { AllPlayersComponent } from './components/all-players/all-players.component' 
 import { provideRouter, RouterOutlet } from '@angular/router';
-import { routes } from './app-routing.module'
+import { routes } from './app-routing.module';
+import { MappoolListComponent } from './components/mappool-list/mappool-list.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     AllPlayersComponent,
+    MappoolListComponent
   ],
   imports: [
     BrowserModule,

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { buildUrl } from 'osu-web.js';
 import { catchError, map, Observable, throwError } from 'rxjs';
 import { Player } from '../models/Player';
+import { Beatmap } from '../models/Beatmap';
 
 @Injectable({
   providedIn: 'root'
@@ -33,4 +34,7 @@ export class HttpRequestsService {
     return this.http.get<Player[]>('/api/free-agents');
   }
   
+  public getBeatmapMetadata(): Observable<Beatmap> {
+    return this.http.get<Beatmap>('/api/getBeatmapMetadata')
+  }
 }

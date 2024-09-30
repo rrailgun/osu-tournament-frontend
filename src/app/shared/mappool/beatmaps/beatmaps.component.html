@@ -1,0 +1,18 @@
+<mat-expansion-panel style="width: 80%;">
+    <mat-expansion-panel-header>
+        <mat-panel-title style="margin-right: -10rem;">
+            <img [src]="'https://assets.ppy.sh/beatmaps/'+beatmapData?.cover+'/covers/cover.jpg'" style="width: 12rem;">
+        </mat-panel-title>
+        <mat-panel-description style="justify-content: space-between;">
+            <span (click)="openBeatmap(beatmapData?.cover!,beatmapData?.beatmap_id!)">{{beatmapData?.artist}} - {{beatmapData?.title}} [{{beatmapData?.diffname}}]</span>
+            <span>★{{beatmapData?.star_rating}} | bpm: {{beatmapData?.bpm}} | Length: {{beatmapData?.drain}} | Combo: {{beatmapData?.combo}}</span>
+        </mat-panel-description>
+    </mat-expansion-panel-header>
+    <hr style="margin: 0%;"> 
+    <div style="width: 50%; float: left;">
+        <span (click)="openProfile(beatmapData?.mapper_id!)">by: {{beatmapData?.mapper}}</span>  
+    </div>
+    <div style="width: 50%; float: right; text-align: end;">
+        <span> CS: {{beatmapData?.circle_size}} | AR: {{beatmapData?.approach_rate}} | OD: {{beatmapData?.overall_difficulty}} | HP: {{beatmapData?.drain_rate}}</span>
+    </div>
+</mat-expansion-panel>
