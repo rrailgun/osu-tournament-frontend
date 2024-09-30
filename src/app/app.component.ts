@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpRequestsService } from './services/http-requests.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { Player } from './models/Player';
 import { Beatmap } from './models/Beatmap';
 import { Observable, of } from 'rxjs';
@@ -12,31 +12,59 @@ import { Observable, of } from 'rxjs';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  userInformation: any; //should create a models folder and make User, Team models etc.
-  beatmapData: any;
-  freeAgents: Player[] = [];
-  allPlayers: Player[] = [];
+  userInformation: Player | undefined; //should create a models folder and make User, Team models etc.
+  beatmapData: Beatmap | undefined;
+  loading: boolean = true;
 
-  
+  links = [
+    {
+      label: 'View All Players',
+      route: '/players/all-players'
+    },
+    {
+      label: 'View Free Agents',
+      route: '/players/free-agents'
+    },
+    {
+      label: 'View Beatmaps',
+      route: '/mappools'
+    },
+    {
+      label: 'Example Broken Link',
+      route: '/adskljf'
+    }
+  ]
 
   constructor(private apiRequests: HttpRequestsService,
-    private route: ActivatedRoute
+    private router: Router
   ) {
-    apiRequests.getSelf().subscribe(res => {
-      this.userInformation = res;
-    })
-    apiRequests.getFreeAgents().subscribe( res => {
-      this.freeAgents = res;
-    })
-    apiRequests.getPlayers().subscribe( res => {
-      this.allPlayers = res;
-    })
-    apiRequests.getBeatmapMetadata().subscribe( res => {
-      this.beatmapData = res;
-    })
+    apiRequests.getSelf().subscribe(
+      res => {
+        this.userInformation = res
+        this.loading = false;
+      },
+      err => {
+        this.userInformation = undefined
+        this.loading = false;
+      }
+    )
+    apiRequests.getBeatmapMetadata().subscribe( 
+      res => {
+        this.beatmapData = res;
+        this.loading = false;
+      },
+      err => {
+        this.beatmapData = undefined
+        this.loading = false;
+      }
+    )
   }
 
   loginOsuOauth():void {
     this.apiRequests.loginOsuOauth();
+  }
+
+  navigate(destination: string) {
+    this.router.navigateByUrl(destination)
   }
 }

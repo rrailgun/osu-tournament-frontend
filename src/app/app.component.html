@@ -1,19 +1,18 @@
-<mat-sidenav-container class="drawer-container">
+<mat-sidenav-container>
   <mat-sidenav mode="side" class="side-drawer" opened>
-    <button mat-button *ngIf="!userInformation" (click)="loginOsuOauth()">Login</button>
-    <div *ngIf="userInformation">
-      <img [src]="'https://a.ppy.sh/'+userInformation.player_id"/>
-      <p>Logged in as {{userInformation.username}}</p>
-    </div>
-    <section>
-      <a mat-button href="/allPlayers">View All Players</a>
-    </section>
-    <section>
-      <a mat-button href="/mappools">View Mappools</a>
-    </section>
-    <section>
-      <a mat-button href="/fdsafadsdasf">Example broken link</a>
-    </section>
+    <mat-spinner *ngIf="loading"></mat-spinner>
+    <ng-container *ngIf="!loading">
+        <button mat-button *ngIf="!userInformation" (click)="loginOsuOauth()">Login</button>
+        <div *ngIf="userInformation">
+          <img [src]="'https://a.ppy.sh/'+userInformation.player_id"/>
+          <p>Logged in as {{userInformation.username}}</p>
+        </div>
+    </ng-container>
+    <mat-nav-list>
+        @for (link of links; track link) {
+            <a mat-list-item (click)="navigate(link.route)">{{link.label}}</a>
+        }
+    </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
     <router-outlet></router-outlet>
