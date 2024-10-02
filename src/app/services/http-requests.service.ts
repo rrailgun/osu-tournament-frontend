@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { buildUrl } from 'osu-web.js';
 import { catchError, map, Observable, throwError } from 'rxjs';
 import { Player } from '../models/Player';
+import { Team } from '../models/Team';
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +32,10 @@ export class HttpRequestsService {
 
   public getFreeAgents(): Observable<Player[]> {
     return this.http.get<Player[]>('/api/free-agents');
+  }
+
+  public getTeams(): Observable<Team[]> {
+    return this.http.get<Team[]>('/api/teams');
   }
   
 }

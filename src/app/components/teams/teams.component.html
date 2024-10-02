@@ -1,0 +1,8 @@
+<p>teams works!</p>
+
+<div>
+    @for (team of data$ | async; track team.teamname) {
+        <p>{{team.teamname}}</p>
+        <app-player-card *ngFor="let player of team.players" [playerData]="player"></app-player-card>
+    }
+</div>

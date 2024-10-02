@@ -14,11 +14,15 @@ export class AppComponent {
   links = [
     {
         label: 'View All Players',
-        route: '/players/all-players'
+        route: '/players'
     },
     {
         label: 'View Free Agents',
         route: '/players/free-agents'
+    },
+    {
+        label: 'View Teams',
+        route: '/teams'
     },
     {
         label: 'Example Broken Link',

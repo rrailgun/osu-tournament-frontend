@@ -4,6 +4,7 @@ import { AllPlayersComponent } from './components/all-players/all-players.compon
 import { AppComponent } from './app.component';
 import { PageNotFoundComponent } from './shared/misc/page-not-found/page-not-found.component';
 import { FreeAgentsComponent } from './components/free-agents/free-agents.component';
+import { TeamsComponent } from './components/teams/teams.component';
 
 export const routes: Routes = [
   {
@@ -15,8 +16,9 @@ export const routes: Routes = [
     path: 'players',
     children: [
         {
-            path: 'all-players',
-            component: AllPlayersComponent
+            path: '',
+            component: AllPlayersComponent,
+            pathMatch: 'full'
         },
         {
             path: 'free-agents',
@@ -24,10 +26,10 @@ export const routes: Routes = [
         }
     ]
   },
-//   {
-//     path: 'allPlayers',
-//     component: AllPlayersComponent
-//   },
+  {
+    path: 'teams',
+    component: TeamsComponent
+  },
   {
     path: '**',
     component: PageNotFoundComponent

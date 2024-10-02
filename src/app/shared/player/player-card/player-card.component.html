@@ -2,7 +2,7 @@
     <mat-card-header>
         <mat-card-title-group>
             <mat-card-title (click)="openProfile(playerData?.player_id!)">{{playerData?.username}}</mat-card-title>
-            <mat-card-subtitle>{{playerData?.team_acr ? playerData?.teamname : 'Free Agent'}}</mat-card-subtitle>
+            <mat-card-subtitle>{{playerData?.teamname ? playerData?.teamname : 'Free Agent'}}</mat-card-subtitle>
             <img mat-card-sm-image [src]="'https://a.ppy.sh/'+playerData?.player_id">
         </mat-card-title-group>
     </mat-card-header>
