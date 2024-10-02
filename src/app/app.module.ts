@@ -13,6 +13,7 @@ import { provideRouter, RouterOutlet } from '@angular/router';
 import { routes } from './app-routing.module'
 import { MatListModule } from '@angular/material/list';
 import { ComponentsModule } from './components/components.module';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { ComponentsModule } from './components/components.module';
     MatButtonModule,
     MatProgressSpinnerModule,
     MatListModule,
-    RouterOutlet
+    RouterOutlet,
+    MatExpansionModule
   ],
   providers: [provideHttpClient(), provideAnimationsAsync(), provideRouter(routes)],
   bootstrap: [AppComponent]

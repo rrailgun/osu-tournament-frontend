@@ -8,11 +8,27 @@
           <p>Logged in as {{userInformation.username}}</p>
         </div>
     </ng-container>
-    <mat-nav-list>
-        @for (link of links; track link) {
-            <a mat-list-item (click)="navigate(link.route)">{{link.label}}</a>
-        }
-    </mat-nav-list>
+    <mat-accordion class="app-nav-accordion">
+        <mat-nav-list>
+            @for (link of links; track link) {
+                <!-- No child links -->
+                <ng-container *ngIf="link.route;else parentLink">
+                    <a mat-list-item (click)="navigate(link.route)">{{link.label}}</a>
+                </ng-container>
+                <!-- Is a dropdown -->
+                <ng-template #parentLink>
+                    <mat-expansion-panel class="mat-elevation-z0">
+                        <mat-expansion-panel-header>
+                            <span>{{link.label}}</span>
+                        </mat-expansion-panel-header>
+                        <mat-nav-list *ngFor="let child of link.children">
+                            <a mat-list-item (click)="navigate(child.route)">{{child.label}}</a>
+                        </mat-nav-list>
+                    </mat-expansion-panel>
+                </ng-template>
+            }
+        </mat-nav-list>
+    </mat-accordion>
   </mat-sidenav>
   <mat-sidenav-content>
     <router-outlet></router-outlet>

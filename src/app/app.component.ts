@@ -13,12 +13,17 @@ export class AppComponent {
   loading: boolean = true;
   links = [
     {
-        label: 'View All Players',
-        route: '/players'
-    },
-    {
-        label: 'View Free Agents',
-        route: '/players/free-agents'
+        label: 'Players',
+        children: [
+            {
+                label: 'View All Players',
+                route: '/players'
+            },
+            {
+                label: 'View Free Agents',
+                route: '/players/free-agents'
+            },
+        ]
     },
     {
         label: 'View Teams',
